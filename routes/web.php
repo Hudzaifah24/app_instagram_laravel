@@ -21,14 +21,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::middleware('auth')->group(function(){
+
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+    Route::resource('comment', CommentController::class);
+
+    Route::get('post/show/{id}', [PostController::class, 'show'])->name('post.show');
+
+    Route::post('post/store', [PostController::class, 'store'])->name('post.store');
+
+    Route::resource('explode', ExplodeController::class);
+
+});
+
 Auth::routes();
-
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-
-Route::resource('comment', CommentController::class);
-
-Route::get('post/show/{id}', [PostController::class, 'show'])->name('post.show');
-
-Route::post('post/store', [PostController::class, 'store'])->name('post.store');
-
-Route::resource('explode', ExplodeController::class);

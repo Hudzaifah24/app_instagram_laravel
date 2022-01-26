@@ -7,16 +7,17 @@
         }
         .overlay {
             position: absolute;
-            height: 500px;
-            width: 500px;
+            height: 1000px;
+            width: 1000px;
             opacity: 0;
-            top: 0;
+            bottom: 0px;
         }
         .overlay:hover {
             opacity: 0.5;
-            height: 500px;
-            width: 500px;
+            height: 1000px;
+            width: 1000px;
             position: absolute;
+            bottom: 0px;
             background: black
         }
     </style>
@@ -28,7 +29,7 @@
         <div class="col-md-12 row">
             @foreach ($posts as $data)
                 <div class="col-md-4">
-                    <div style="height: 300px; overflow: hidden;">
+                    <div style="height: 300px; width: 100%; overflow: hidden;">
                         <a href="#comment{{$data->id}}" data-bs-toggle="modal" class="relative">
                             <div class="overlay"></div>
                             <img src="{{asset('post/'.$data->image)}}" alt="image">
