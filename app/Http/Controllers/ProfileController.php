@@ -7,6 +7,7 @@ use App\Models\Profile;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
@@ -27,7 +28,7 @@ class ProfileController extends Controller
     {
         $user = User::findOrFail(Auth::user()->id);
 
-        return view('pages.edit_profile', compact('user'));
+        return view('pages.change_profile', compact('user'));
     }
 
     public function update(Request $request, $id)
@@ -47,13 +48,28 @@ class ProfileController extends Controller
 
     public function photo(Request $request, $id)
     {
-        $data = $request->all();
-
         $profile = Profile::where('user_id', $id)->first();
 
-        $profile->update($data);
+        $name = time().'.'.$request->file('image')->getClientOriginalExtension();
+
+        $request->file('image')->move(public_path('profile'), $name);
+
+        $profile->update([
+            'image' => $name,
+        ]);
 
         return redirect()->route('profile.show', $id)->with('update-photo-success', '');
+    }
+
+    public function changePassword(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->update([
+            'password' => Hash::make($request->password),
+        ]);
+
+        return redirect()->route('profile.show', $id)->with('update-password-success', '');
     }
 
 }

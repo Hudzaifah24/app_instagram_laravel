@@ -3,6 +3,7 @@
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\ExplodeController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PasswordController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -37,6 +38,8 @@ Route::middleware('auth')->group(function(){
     Route::resource('profile', ProfileController::class);
 
     Route::put('photo/profile/{id}', [ProfileController::class, 'photo'])->name('profile.photo');
+
+    Route::resource('passwordProfile', PasswordController::class);
 
 });
 
