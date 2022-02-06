@@ -82,19 +82,18 @@
                     <li class="nav-item dropdown">
 
                         <a id="navbarDropdown" class="nav-link" href="#" role="button" data-bs-toggle="dropdown" data-bs-display="static" aria-haspopup="true" aria-expanded="false" v-pre>
-                                <img
-                                    src="{{Auth::user()->profile != null ? Auth::user()->profile->image : '-'}}"
-                                    alt="profile {{Auth::user()->user_name}}"
-                                    class="rounded-circle"
-                                    style="width: 35px; height: 35px;"
-                                    >
-                                </a>
+                            <img
+                                src="{{Auth::user()->profile != null ? Auth::user()->profile->image : '-'}}"
+                                alt="profile {{Auth::user()->user_name}}"
+                                class="rounded-circle"
+                                style="width: 35px; height: 35px;"
+                            >
+                        </a>
 
                         <div class="dropdown-menu dropdown-menu-end dropdown-menu-lg-start" aria-labelledby="navbarDropdown">
-                            <a href="" class="dropdown-item">Profile</a>
+                            <a href="{{route('profile.index')}}" class="dropdown-item">Profile</a>
                             <a class="dropdown-item border-top" href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-                                             document.getElementById('logout-form').submit();">
+                               onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
 

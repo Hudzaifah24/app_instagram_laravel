@@ -30,7 +30,7 @@
             @foreach ($posts as $data)
                 <div class="col-md-4">
                     <div style="height: 300px; width: 100%; overflow: hidden;">
-                        <a href="#comment{{$data->id}}" data-bs-toggle="modal" class="relative">
+                        <a href="#comment{{$data->id}}" data-bs-toggle="modal" class="relative d-flex justify-content-between">
                             <div class="overlay"></div>
                             <img src="{{asset('post/'.$data->image)}}" alt="image">
                         </a>

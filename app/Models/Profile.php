@@ -13,11 +13,11 @@ class Profile extends Model
 
     protected $fillable = [
         'user_id',
-        'date_or_birth',
+        'date_of_birth',
         'image',
         'gender',
         'phone_number',
         'bio',
-        'webesite',
+        'website',
     ];
 }

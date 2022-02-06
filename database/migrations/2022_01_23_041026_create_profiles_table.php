@@ -18,7 +18,7 @@ class CreateProfilesTable extends Migration
             $table->foreignId('user_id');
             $table->date('date_of_birth')->nullable();
             $table->text('image')->nullable();
-            $table->enum('gender', ['laki-laki', 'perempuan', 'lainnya'])->nullable();
+            $table->enum('gender', ['Male', 'Female', 'Others'])->nullable();
             $table->string('phone_number', 20)->nullable();
             $table->string('bio')->nullable();
             $table->text('website')->nullable();
